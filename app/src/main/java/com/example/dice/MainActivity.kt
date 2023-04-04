@@ -17,7 +17,6 @@ class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar!!.setTitle("Dice Roll")
         supportActionBar!!.setBackgroundDrawable(ColorDrawable(Color.parseColor("#FF03DAC5")))
         val rollButton: Button = findViewById(R.id.roll_button)
 
@@ -29,6 +28,9 @@ class MainActivity: AppCompatActivity() {
     private fun diceRole() {
         val diceImage: ImageView = findViewById(R.id.dice_image)
         val randomInt = Random.nextInt(6)+1
+        if(randomInt == 6){
+            Toast.makeText(this, "You won!!!", Toast.LENGTH_SHORT).show()
+        }
         val result = when (randomInt){
             6 -> R.drawable.dice_6
             5 -> R.drawable.dice_5
